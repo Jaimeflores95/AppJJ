@@ -1,7 +1,8 @@
 <%-- 
     Document   : editarcliente2
-    Created on : 2/11/2014, 09:54:42 PM
-    Author     : Compac
+    Created on : 26/02/2015, 09:54:42 PM
+    Author     : ConMonisa
+    Descripción: Este Jsp obtiene los datos del formulario para editar el cliente
 --%>
 
 
@@ -192,7 +193,7 @@ $(document).ready(function() {
             c.setEmailcliente(request.getParameter("emailcliente"));
             c.setTelefonocliente(request.getParameter("telefonocliente"));
             c.setRFC(request.getParameter("RFC"));
-            //Verificamos cual boton presiono el  alumno y hacemos la llamada correspondiente
+            //Verificamos cual boton presiono el  cliente y hacemos la llamada correspondiente
             if (request.getParameter("guardar")!=null) {
                     edao.modificarCliente(c);
                     out.println("Se modifico el registro");

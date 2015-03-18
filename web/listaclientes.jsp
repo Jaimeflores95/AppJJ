@@ -1,7 +1,8 @@
 <%-- 
     Document   : listaclientes
-    Created on : 3/11/2014, 12:26:04 PM
-    Author     : Compac
+    Created on : 04/03/2015, 12:26:04 PM
+    Author     : AppJJ
+    Descripción: Obtiene los datos insertados en la tabla clientes, asi mismo contiene in link a editar el cliente.
 --%>
 
 

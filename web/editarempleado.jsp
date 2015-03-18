@@ -1,7 +1,8 @@
 <%-- 
-    Document   : insertarempleado
-    Created on : 23/09/2014, 11:57:42 AM
-    Author     : Alumno
+    Document   : editarempleado
+    Created on : 26/02/2015, 11:57:42 AM
+    Author     : ConMonisa
+    Descripción: Este jsp muestra un fomulario en la página para editar empleado.
 --%>
 
 

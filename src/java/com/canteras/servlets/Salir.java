@@ -1,6 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * document   : Salir
+    Created on : 23/02/2015, 11:48:47 AM
+    Author     : AppJJ
+    Descripción: permite salir de la pagina 
  */
 package com.canteras.servlets;
 

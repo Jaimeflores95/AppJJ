@@ -6,7 +6,10 @@ package com.canteras.clases;
 
 /**
  *
- * @author Compac
+ * document   : claseCliente
+    Created on : 23/02/2015, 11:48:47 AM
+    Author     : AppJJ
+    Descripción: clase que contiene los atributos de la tabla cliente y sus getter and setter.
  */
 public class Cliente {
     //Atributos

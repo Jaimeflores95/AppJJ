@@ -1,7 +1,8 @@
  <%-- 
     Document   : insertarcliente
-    Created on : 31/10/2014, 09:45:16 AM
-    Author     : Alumno
+    Created on : 26/02/2015, 09:45:16 AM
+    Author     : ConMonisa
+    Descripción: Pemite mediante un formulario ingresar los datos del cliente.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

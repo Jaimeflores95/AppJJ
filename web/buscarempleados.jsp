@@ -1,7 +1,8 @@
 <%-- 
     Document   : buscarempleados
-    Created on : 10/10/2014, 09:21:44 AM
-    Author     : Alumno
+    Created on : 06/02/2015, 09:21:44 AM
+    Author     : ConMonisa
+    Descripción: Busca los registros insertados en la tabla empleados.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

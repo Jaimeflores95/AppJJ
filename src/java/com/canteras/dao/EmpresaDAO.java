@@ -1,7 +1,11 @@
 package com.canteras.dao;
-
-
-
+/**
+ *
+ * document   : claseEmpresa
+    Created on : 23/02/2015, 11:48:47 AM
+    Author     : AppJJ
+    Descripción: clase que contiene los metodos
+ */
 import com.canteras.clases.Cliente;
 import com.canteras.clases.Empleado;
 import com.canteras.clases.Producto;

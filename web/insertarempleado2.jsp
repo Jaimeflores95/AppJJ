@@ -1,7 +1,8 @@
 <%-- 
     Document   : insertarempleado2
-    Created on : 25/09/2014, 11:29:53 AM
-    Author     : Alumno
+    Created on : 25/02/2015, 11:29:53 AM
+    Author     : AppJJ
+    Descripción: Obtiene los datos del formulario para insertar empleado.
 --%>
 
 

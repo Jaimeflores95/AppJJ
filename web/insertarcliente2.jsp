@@ -1,7 +1,8 @@
 <%-- 
     Document   : insertarcliente2
-    Created on : 1/11/2014, 09:46:18 PM
-    Author     : Compac
+    Created on : 26/02/2015, 09:46:18 PM
+    Author     : AppJJ
+    Descripción: Obtiene los datos del formulario insertarcliente.jsp
 --%>
 
 

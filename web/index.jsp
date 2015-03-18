@@ -1,4 +1,9 @@
-
+<%-- 
+    Document   : index
+    Created on : 23/02/2015, 11:57:42 AM
+    Author     : AppJJ
+    Descripción: Es la primera pantalla que despliega el sitio, en la cual muestra el formulario para que el empleado pueda acceder.
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

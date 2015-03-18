@@ -1,7 +1,9 @@
 <%-- 
     Document   : buscarclientes
-    Created on : 3/11/2014, 11:48:47 AM
-    Author     : Compac
+    Created on : 05/03/2015, 11:48:47 AM
+    Author     : AppJJ
+    Descripción: Busca los clientes existentes en la tabla.
+
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

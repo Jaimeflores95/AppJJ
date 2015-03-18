@@ -1,7 +1,8 @@
 <%-- 
     Document   : listaempleados
-    Created on : 30/09/2014, 10:58:04 AM
-    Author     : Alumno
+    Created on : 04/02/2015, 10:58:04 AM
+    Author     : AppJJ
+    Descripción: Obtiene mediante una lista los empleados insertados en la tabla empleados ademas de un link a editar empleado.
 --%>
 
 

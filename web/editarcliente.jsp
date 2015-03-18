@@ -1,7 +1,8 @@
 <%-- 
     Document   : editarcliente
-    Created on : 2/11/2014, 09:38:13 PM
-    Author     : Compac
+    Created on : 26/02/2015, 09:38:13 PM
+    Author     : ConMonisa
+    Descripción: Este Jsp muestra el formulario para editar un cliente.
 --%>
 
 

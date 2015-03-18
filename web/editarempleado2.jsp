@@ -1,5 +1,9 @@
-
-
+<%-- 
+    Document   : editarempleado2
+    Created on : 26/02/2015, 11:57:42 AM
+    Author     : ConMonisa
+    Descripción: Permite realizar la modificación de los datos insertados en la tabla empleados.
+--%>
 <%@page import="com.canteras.dao.EmpresaDAO"%>
 <%@page import="com.canteras.clases.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

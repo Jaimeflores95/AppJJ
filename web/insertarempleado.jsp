@@ -1,7 +1,8 @@
 <%-- 
     Document   : insertarempleado
-    Created on : 23/09/2014, 11:57:42 AM
-    Author     : Alumno
+    Created on : 25/02/2015, 11:57:42 AM
+    Author     : AppJJ
+    Descripción: Permite mediante un formulario ingresar datos del empleado en la tabla empleados.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

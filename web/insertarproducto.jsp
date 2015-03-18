@@ -1,7 +1,8 @@
  <%-- 
-    Document   : insertarcliente
-    Created on : 31/10/2014, 09:45:16 AM
-    Author     : Alumno
+    Document   : insertarproducto
+    Created on : 06/03/2015, 09:45:16 AM
+    Author     : AppJJ
+    Descripción: Permite mediante un formulario ingresar datos del producto.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
