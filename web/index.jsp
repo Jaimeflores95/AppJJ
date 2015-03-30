@@ -3,120 +3,78 @@
     Created on : 23/02/2015, 11:57:42 AM
     Author     : AppJJ
     Descripción: Es la primera pantalla que despliega el sitio, en la cual muestra el formulario para que el empleado pueda acceder.
+    Version 1.2: Cambio de diseño(plantilla y colores del menu)
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <!inicio codigo plantilla >
         
-        <meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
-
+        <!inicio codigo plantilla >
+    <meta charset="utf-8">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/tms-0.4.1.js"></script>
+    <script src="js/slider.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			function equalHeight(group) {
+				var tallest = 0;
+				group.each(function() {
+					var thisHeight = $(this).height();
+					if(thisHeight > tallest) {
+						tallest = thisHeight;
+					}
+				});
+				group.height(tallest);
+			}	
+			equalHeight($(".box-1 .inner"));
+		})
+	</script>
         <!fin codigo plantilla >
-        <title>.:.Canteras Galindo.:.</title>
+        
+            <br /><br />
+            <br /><br />
+        <title>.:.CANTERAS GALINDO.:.</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
-        <!inicio codigo plantilla>
-        <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
-		<script type="text/javascript" src="lib/jquery.easing.1.3.js"></script>
-		<script type="text/javascript" src="lib/jquery.coda-slider-2.0.js"></script>
-                
-                <!-- Initialize each slider on the page. Each slider must have a unique id -->
-	<script type="text/javascript">
-	$().ready(function() {
-	$('#coda-slider-2').codaSlider({
-		autoSlide: true,
-		autoSlideInterval: 6000,
-		autoSlideStopWhenClicked: true	
-			
-	});
- });
-</script>
-
-<script type="text/javascript" src="lib/pirobox.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$().piroBox({
-			my_speed: 400, //animation speed
-			bg_alpha: 0.1, //background opacity
-			slideShow : false, // true == slideshow on, false == slideshow off
-			slideSpeed : 4, //slideshow duration in seconds(3 to 6 Recommended)
-			close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
-
-	});
-});
-</script>
-
-<link href="style.css" rel="stylesheet" type="text/css" />
-
-        <!fin codigo plantilla>
+       
     </head>
     <body>
         
-          <!nicio codigo de plantilla>
-  
-<div id="bg_img">
-    
-			<div id="site_div">
-                             
-				<div id="header">
-                                    
-                                        
-                                    
-                                    
-					<div id="logo">
-						<h1><a href="#">AppJJ</a></h1>
-                                                <image src="images/LogotipoMin.jpg" alt="" />
-                                                <div>
-                                                    <a href="#"><small> by ConMonisa</small></a>
-                                                </div>
-						
-                                                
-					</div>
-                                    <div id="cantera">
-						<h1> Canteras Galindo </h1>
+    <!inicio codigo plantilla>
+        <header>
+    <div class="inner">
+        
+        <h1>Canteras Galindo</h1>
+        <div class="fright">
+            <div class="header-meta">
+ 
+                <div class="col-elem">
+                    AppJJ<br>
+                    By:
+                    <span class="text">
+                        ConMonisa
+                    </span>
+                </div>
+            </div>
+    <!fin codigo plantilla>
 
-        <%
-            if (request.getParameter("error") != null) {
-
-
-        %>
-        <div id="error" style="color:red">
-            El empleado no existe o la contrase&ntilde;a es incorrecta:
-        </div>
-        <%             
-            }
-        %>
-
-					</div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
+    <center>
         <form action="Login" method="POST" id="formulario">
-            <table border="0">
-                <thead>
+             <table style="font-size:12pt" border="0">
+                 <thead style="color:navy">
                 <th colspan="2" align="center">
                     Introduce tu usuario y contrase&ntilde;a:
+                    <br /><br />
                 </th>
                 </thead>
-                <tbody>
+                <tbody style="color:navy">
                     <tr>
                         <td align="center">
                             <div align="center">Empleado:</div>
@@ -137,9 +95,10 @@ $(document).ready(function() {
                             </div>
                         </td>
                     </tr>
+                    
                     <tr>
                         <td colspan="2" align="center">
-                            
+                            <br />
                             <input type="submit" value="Entrar" />
                             
                         </td>
@@ -147,7 +106,29 @@ $(document).ready(function() {
                 </tbody>
                 
             </table>
+            <br /><br />
+            
             <image src="img/4g.jpg" alt="" />
         </form>
+    </center>
+            
+            
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+    <!-- Footer -->
+<footer>
+    <div class="copyright">
+        &copy; 2015 <strong class="Canteras ">Canteras Galindo</strong>
+        <div> Contactanos:Conmonisa14@gmail.com</div>
+		
+    </div>
+    <ul class="social-list">
+    	
+        <li><a href="#"><img src="images/social-link-2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/social-link-3.jpg" alt=""></a></li>  
+    </ul>
+</footer>
     </body>
 </html>

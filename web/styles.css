@@ -2,15 +2,30 @@
 img {padding:0;border:none}
 a {color:#873c02;font-weight:bold;text-decoration:none}
 a:hover {text-decoration:none;color:#000}
-h1 {font-family:Arial, Helvetica, sans-serif;font-size:32px;font-weight:bold;color:#fff;text-transform:uppercase;padding-bottom:10px}
 h2 {font-family:Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;color:#873c02;text-transform:uppercase;padding-bottom:10px}
-h3 {font-family:Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;color:#873c02}
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #0000FF
+}
 .row h3 {padding-top:10px;padding-bottom:5px}
 h4 {font-family:Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;color:#873c02;text-transform:uppercase;padding-bottom:10px;padding-top:5px}
 h5 {font-family:Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;color:#fff;background:url(images/blog_title_right.png) no-repeat top left;width:262px;height:32px;padding-left:40px;padding-top:15px}
-body {font-family:Arial, Helvetica, sans-serif;font-size:12px;line-height:18px;color:#232323;background:#37cd01 url(images/bg_grad.jpg) repeat-x top}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 15px;
+	color: #000000;
+	background: #37cd01 url(images/bg_grad.jpg) repeat-x top
+}
 .inner_copy, .inner_copy a {border:0;float:right;background:#fff;color:#f00;width:50%;line-height:10px;font-size:10px;margin:-220% 0 0 0;overflow:hidden;padding:0}
-#bg_img {background:url(images/bg.jpg) no-repeat top center}
+#bg_img {
+	background-color: #CCC;
+	background-image: url(images/bg.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
 #site_div {width:1000px;margin:0 auto}
 /*Logo*/
 #logo {padding-top:30px;padding-left:650px;height:85px}
@@ -95,22 +110,79 @@ body {font-family:Arial, Helvetica, sans-serif;font-size:12px;line-height:18px;c
 .news_text {clear:both;padding-top:20px;line-height:20px}
 .tegs_box {clear:both;padding-top:5px}
 .row {padding-left:1px;height:235px;width:999px}
-.box_img2 {width:308px;height:225px;background:url(images/img_bg_ind3.png) 0px 0px no-repeat;padding:10px 0px 0px 10px;float:left}
+.box_img2 {
+	width: 308px;
+	height: 225px;
+	padding: 10px 0px 0px 10px;
+	float: left;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-color: #CCC;
+}
 .box_razd {width:14px;height:50px;float:left}
 .box_img2 h1 {font-family:Arial, Helvetica, sans-serif;font-size:24px;font-weight:100;color:#002380;text-align:left;padding:8px 0px 3px 0px}
 .rol_over:hover {background:url(images/rol_over_galery.png) left top no-repeat}
-.g_size {width:298px;height:123px;display:block}
-.g1 {background:url(images/gal1.jpg) left top no-repeat}
-.g2 {background:url(images/gal2.jpg) left top no-repeat}
-.g3 {background:url(images/gal3.jpg) left top no-repeat}
-.g4 {background:url(images/gal4.jpg) left top no-repeat}
-.g5 {background:url(images/gal5.jpg) left top no-repeat}
-.g6 {background:url(images/gal6.jpg) left top no-repeat}
-.g7 {background:url(images/gal7.jpg) left top no-repeat}
-.g8 {background:url(images/gal8.jpg) left top no-repeat}
-.g9 {background:url(images/gal9.jpg) left top no-repeat}
+.g_size {
+	width: 250px;
+	height: 128px;
+	display: block
+}
+.g1 {
+	background-image: url(images/amarillo.JPG);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.g2 {
+	background-image: url(images/blanca.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.g3 {
+	background-image: url(images/cafe.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.g4 {
+	background-image: url(images/negra.JPG);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.g5 {
+	background-image: url(images/pnon.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.g6 {
+	background-image: url(images/tabaco.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.g7 {
+	background-image: url(images/recinto.jpg);
+	background-repeat: repeat;
+	background-position: left top;
+}
+.g8 {
+	background-image: url(images/rosa.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.g9 {
+	background-image: url(images/tikul.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
 .pirobox_gal1 {width:298px;height:123px;display:block}
-.pirobox_gal1:hover {width:298px;height:123px;display:block;background:url(images/rol_over_galery.png) left top no-repeat}
+.pirobox_gal1:hover {
+	width: 298px;
+	height: 123px;
+	display: block;
+	background-image: url(images/13.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-color: #CCC;
+}
 /*footer*/
 .foot_col {width:941px;margin:0 auto;background:url(images/footer_grad.png) no-repeat top left;padding-top:20px;padding-left:60px;min-height:180px}
 #footer_bot {clear:both;background:url(images/footer.png) repeat-x;text-align:center;height:55px;padding-top:20px}

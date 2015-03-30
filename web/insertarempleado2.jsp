@@ -19,77 +19,66 @@
 %>
 <html>
     <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
-    <link rel="stylesheet" href="css/style.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
+    <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <!inicio codigo plantilla >
-        
-        <meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
-
+        <!inicio codigo plantilla >
+    <meta charset="utf-8">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/tms-0.4.1.js"></script>
+    <script src="js/slider.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			function equalHeight(group) {
+				var tallest = 0;
+				group.each(function() {
+					var thisHeight = $(this).height();
+					if(thisHeight > tallest) {
+						tallest = thisHeight;
+					}
+				});
+				group.height(tallest);
+			}	
+			equalHeight($(".box-1 .inner"));
+		})
+	</script>
         <!fin codigo plantilla >
         <title>Insertar Empleado 2</title>
-        <!inicio codigo plantilla>
-        <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
-		<script type="text/javascript" src="lib/jquery.easing.1.3.js"></script>
-		<script type="text/javascript" src="lib/jquery.coda-slider-2.0.js"></script>
-                
-                <!-- Initialize each slider on the page. Each slider must have a unique id -->
-	<script type="text/javascript">
-	$().ready(function() {
-	$('#coda-slider-2').codaSlider({
-		autoSlide: true,
-		autoSlideInterval: 6000,
-		autoSlideStopWhenClicked: true	
-			
-	});
- });
-</script>
-
-<script type="text/javascript" src="lib/pirobox.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$().piroBox({
-			my_speed: 400, //animation speed
-			bg_alpha: 0.1, //background opacity
-			slideShow : false, // true == slideshow on, false == slideshow off
-			slideSpeed : 4, //slideshow duration in seconds(3 to 6 Recommended)
-			close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
-
-	});
-});
-</script>
-
-<link href="style.css" rel="stylesheet" type="text/css" />
-
-        <!fin codigo plantilla>
+       
     </head>
     <body>
-         <!nicio codigo de plantilla>
-  
-<div id="bg_img">
-    
-			<div id="site_div">
-                             
-				<div id="header">
-                                    
-                                        
-                                    <div id="logo">
-						<h1><a href="#">AppJJ</a></h1>
-                                                <image src="images/LogotipoMin.jpg" alt="" />
-                                                <div>
-                                                    <a href="#"><small> by ConMonisa</small></a>
-                                                </div>
-						
-                                                
-					</div>
-                                    <div id="cantera">
-						<h1>CANTERAS GALINDO</h1>
-        Bienvenido(a), <%=session.getAttribute("nombrempleado")%>
-        <br /><br />
-       
-					</div>
+        <!inicio codigo plantilla>
+        <header>
+    <div class="inner">
+        
+        <h1>Canteras Galindo</h1>
+        <div class="fright">
+            <div class="header-meta">
+ 
+                <div class="col-elem">
+                    AppJJ<br>
+                    By:
+                    <span class="text">
+                        ConMonisa
+                    </span>
+                </div>
+            </div>
+    <!fin codigo plantilla>
+          
+  <br /><br />
+        <%
+
+            //de acuerdo al tipo de empleado mostramos el contenido correspondiente
+            if (session.getAttribute("tipoempleado").toString().equals("1")) {
+
+
+        %>
 
  <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
@@ -106,12 +95,8 @@ $(document).ready(function() {
 		<li><a href="listaempleados.jsp">Lista</a></li>
 		<li class="sublast"><a href="buscarempleados.jsp">Buscar</a></li>
 	</ul></li>
-	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
-	<ul>
-		<li class="subfirst"><a href="insertarproducto.jsp">Nuevo</a></li>
-		<li><a href="listaproductos.jsp">Lista</a></li>
-		<li class="sublast"><a href="buscarproductos.jsp">Buscar</a></li>
-	</ul></li>
+	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
+	</li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/cart3.png" alt=""/>Ventas</span></a>
 	<ul>
 		<li class="subfirst"><a href="insertarventa.jsp">Nuevo</a></li>
@@ -123,6 +108,46 @@ $(document).ready(function() {
 <!-- End css3menu.com BODY section -->
 
         
+          <%
+            }
+        else{
+            %>
+
+            
+                   <!-- Start css3menu.com BODY section -->
+<ul id="css3menu1" class="topmenu">
+<input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
+	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
+	<ul>
+		<li class="subfirst"><a href="insertarcliente.jsp">Nuevo</a></li>
+		<li><a href="listaclientes.jsp">Lista</a></li>
+		<li class="sublast"><a href="buscarclientes.jsp">Buscar</a></li>
+	</ul></li>
+	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users1.png" alt=""/>Empleados</span></a>
+	<ul>
+		<li class="subfirst"><a href="insertarempleado.jsp">Nuevo</a></li>
+		<li><a href="listaempleados.jsp">Lista</a></li>
+		<li class="sublast"><a href="buscarempleados.jsp">Buscar</a></li>
+	</ul></li>
+	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
+	</li>
+	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/cart3.png" alt=""/>Ventas</span></a>
+	<ul>
+		<li class="subfirst"><a href="insertarventa.jsp">Nuevo</a></li>
+		<li><a href="listaventas.jsp">Lista</a></li>
+		<li class="sublast"><a href="buscarventas.jsp">Buscar</a></li>
+	</ul></li>
+	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
+</ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
+<!-- End css3menu.com BODY section -->
+            
+            
+<!--Fin-->
+            
+            
+        <%
+            }
+        %>
         
         <h2>Nuevo Empleado</h2>
         
@@ -153,12 +178,19 @@ $(document).ready(function() {
         <br /><br />
         <br /><br />
         <br /><br />
-        
-        <div id="footer_bot">
-					<p>Copyright statement. Designed by <a href="Conmonisatrejo14@gmai.com">@ConMonisa</a></p>
-					<p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-					
-				</div>
+  <!-- Footer -->
+<footer>
+    <div class="copyright">
+        &copy; 2015 <strong class="Canteras ">Canteras Galindo</strong>
+        <div> Contactanos:Conmonisa14@gmail.com</div>
+		
+    </div>
+    <ul class="social-list">
+    	
+        <li><a href="#"><img src="images/social-link-2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/social-link-3.jpg" alt=""></a></li>  
+    </ul>
+</footer>
        
     </body>
     
