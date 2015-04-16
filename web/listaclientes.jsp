@@ -98,12 +98,7 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/cart3.png" alt=""/>Ventas</span></a>
-	<ul>
-		<li class="subfirst"><a href="insertarventa.jsp">Nuevo</a></li>
-		<li><a href="listaventas.jsp">Lista</a></li>
-		<li class="sublast"><a href="buscarventas.jsp">Buscar</a></li>
-	</ul></li>
+
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
@@ -131,12 +126,7 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/cart3.png" alt=""/>Ventas</span></a>
-	<ul>
-		<li class="subfirst"><a href="insertarventa.jsp">Nuevo</a></li>
-		<li><a href="listaventas.jsp">Lista</a></li>
-		<li class="sublast"><a href="buscarventas.jsp">Buscar</a></li>
-	</ul></li>
+
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
