@@ -7,9 +7,8 @@ package com.canteras.dao;
     Descripción: clase que contiene los metodos
  */
 import com.canteras.clases.Cliente;
+import com.canteras.clases.Compra;
 import com.canteras.clases.Empleado;
-import com.canteras.clases.Producto;
-import com.canteras.clases.Venta;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -362,27 +361,20 @@ public class EmpresaDAO {
             System.out.println("Error: "+sqle);
         }
         desconectar();
-    }
+    } 
+     
     
+       ///METODOS DE InSERSION Compra-----!/////
     
+     //metodo para verificar que exista el la compra
     
-    
-    
-    
-    //PRODUCTO-----------------------------------------------
-    
-     ///METODOS DE InSERSION Producto-----!/////
-    
-     //metodo para verificar que exista el producto
-    
-     //metodo para insertar un producto en una BD
-    public void insertarProducto(Producto p) {
+     //metodo para insertar una compra  en una BD
+    public void insertarCompra(Compra co) {
         conectar();
         int a = 0;
         try {
             smt = con.createStatement();
-            a = smt.executeUpdate("insert into producto values "
-                    + "(" + null+ ",'" + p.getNombreproducto() + "'," + p.getPrecioproducto()+")");
+            a = smt.executeUpdate("insert into compra values (" + null+ "," + co.getIdcli() + ",'" + co.getNombreproducto()+ "','" + co.getMedidas() + "','" + co.getFechacompra() + "'," + co.getTotalcompra()+")");
         } catch (SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
@@ -390,12 +382,12 @@ public class EmpresaDAO {
     }
 
     //Metodo para verificar que el ID deseado no esta en uso
-    public boolean buscarIDProducto(int idproducto) {
+    public boolean buscarIDCompra(int idcompra) {
         conectar();
         int encontrado = 0;
         try {
             smt = con.createStatement();
-            rs = smt.executeQuery("select * from producto where (idproducto='" + idproducto + "')");
+            rs = smt.executeQuery("select * from compra where (idcompra='" + idcompra + "')");
             rs.next();
             if (rs.getRow() != 0) {
                 encontrado = 1;
@@ -409,29 +401,31 @@ public class EmpresaDAO {
             return true;
         } else {
             return false;
-        }  
+        }
+        
+        
     }
-    
-    
-    
-    //metodo para obtener un listado de productos
-    public List<Producto> getProducto() {
+    //metodo para obtener un listado de clientes
+    public List<Compra> getCompras() {
         //declarar una variable local en la cual almacenaremos los registros
-        List<Producto> listaProductos = new ArrayList<Producto>();
+        List<Compra> listaCompras = new ArrayList<Compra>();
 
         conectar();
         int encontrado = 0;
         try {
             smt = con.createStatement();
-            rs = smt.executeQuery("select * from producto");
+            rs = smt.executeQuery("select * from compra");
             while (rs.next()) {
-                Producto p = new Producto();
-                p.setIdproducto(rs.getInt("idproducto"));
-                p.setNombreproducto(rs.getString("nombreproducto"));
-                p.setPrecioproducto(rs.getDouble("precioproducto"));
-               
+                Compra co = new Compra();
+                co.setIdcompra(rs.getInt("idcompra"));
+                co.setIdcli(rs.getInt("idcli"));
+                co.setNombreproducto(rs.getString("nombreproducto"));
+                co.setMedidas(rs.getString("medidas"));
+                co.setFechacompra(rs.getString("fechacompra"));
+                co.setTotalcompra(rs.getInt("totalcompra"));
+                
 
-                listaProductos.add(p);
+                listaCompras.add(co);
                 encontrado = 1;
 
             }
@@ -441,7 +435,7 @@ public class EmpresaDAO {
         }
         desconectar();
         if (encontrado != 0) {
-            return listaProductos;
+            return listaCompras;
         } else {
             return null;
         }
@@ -449,20 +443,23 @@ public class EmpresaDAO {
     
     
 
-    //metodo para buscar un producto en la base de datos
-    public Producto buscarProducto(int idproducto){
-        Producto p=new Producto();
+    //metodo para buscar una compra en la base de datos
+    public Compra buscarCompra(int idcompra){
+        Compra co=new Compra();
         conectar();
         int encontrado=0;
         
         try{
             smt=con.createStatement();
-            rs=smt.executeQuery("select * from producto where (idproducto='"+idproducto+"')");
+            rs=smt.executeQuery("select * from compra where (idcompra='"+idcompra+"')");
             rs.next();
             if (rs.getRow()!=0) {
-                p.setIdproducto(rs.getInt("idproducto"));
-                p.setNombreproducto(rs.getString("nombreproducto"));
-                p.setPrecioproducto(rs.getDouble("precioproducto"));
+                co.setIdcompra(rs.getInt("idcompra"));
+                co.setIdcli(rs.getInt("idcli"));
+                co.setNombreproducto(rs.getString("nombreproducto"));
+                co.setMedidas(rs.getString("medidas"));
+                co.setFechacompra(rs.getString("fechacompra"));
+                co.setTotalcompra(rs.getInt("totalcompra"));
                 
                 encontrado=1;
             }
@@ -471,22 +468,25 @@ public class EmpresaDAO {
         }
         desconectar();
         if (encontrado != 0) {
-            return p;
+            return co;
         } else {
             return null;
         }
     }
     
-    //Modificar
-    public void modificarProducto(Producto p){
+    //modificar compra
+    public void modificarCompra(Compra co){
         conectar();
         int a=0;
         try{
             smt=con.createStatement();
-            a=smt.executeUpdate("update producto"
-                    + " set nombreproducto='"+p.getNombreproducto()+"'"
-                    + ",precioproducto='"+p.getPrecioproducto()+"'"              
-                    + " where (idproducto="+p.getIdproducto()+")");
+            a=smt.executeUpdate("update compra"
+                    + " set idcli='"+co.getIdcli()+"'"
+                    + " set nombreproducto='"+co.getNombreproducto()+"'"
+                    + ",medidas='"+co.getMedidas()+"'"
+                    + ",fechacompra='"+co.getFechacompra()+"'"
+                    + ",totalcompra='"+co.getTotalcompra()+"'"
+                    + " where (idcompra="+co.getIdcompra()+")");
         }
         catch(SQLException sqle){
             System.out.println("Error: "+sqle);
@@ -495,169 +495,20 @@ public class EmpresaDAO {
     }
     
     
-    
-    //Metodo para eliminar producto
-    public void eliminarProducto(int idproducto){
+    //Metodo para eliminar Compra
+    public void eliminarCompra(int idcompra){
         conectar();
         int a=0;
         try{
             smt=con.createStatement();
-            a=smt.executeUpdate("delete from producto where (idproducto='"+idproducto+"')");
+            a=smt.executeUpdate("delete from compra where (idcompra='"+idcompra+"')");
         }
         catch(SQLException sqle){
             System.out.println("Error: "+sqle);
         }
         desconectar();
-    }
-    
-    
-    
-   
-    
-    
-     //Venta-----------------------------------------------
-    
-     ///METODOS DE InSERSION Venta-----!/////
-    
-     //metodo para verificar que exista la venta 
-    
-     //metodo para insertar una venta en una BD
-    public void insertarVenta(Venta v) {
-        conectar();
-        int a = 0;
-        try {
-            smt = con.createStatement();
-            a = smt.executeUpdate("insert into ventas values "
-                    + "(" + null+ "," + v.getCantidadproducto()+ ",'" + v.getFechaventa() + "'," + v.getTotalventaproducto() + ")");
-        } catch (SQLException sqle) {
-            System.out.println("Error: " + sqle);
-        }
-        desconectar();
-    }
+    } 
 
-    //Metodo para verificar que el ID deseado no esta en uso
-    public boolean buscarIDVenta(int id_venta) {
-        conectar();
-        int encontrado = 0;
-        try {
-            smt = con.createStatement();
-            rs = smt.executeQuery("select * from ventas where (id_venta='" + id_venta + "')");
-            rs.next();
-            if (rs.getRow() != 0) {
-                encontrado = 1;
-
-            }
-        } catch (SQLException sqle) {
-            System.out.println("Error: " + sqle);
-        }
-        desconectar();
-        if (encontrado != 0) {
-            return true;
-        } else {
-            return false;
-        }    
-    }
-    
-    
-    //metodo para obtener un listado de ventas
-    public List<Venta> getVentas() {
-        //declarar una variable local en la cual almacenaremos los registros
-        List<Venta> listaVentas = new ArrayList<Venta>();
-
-        conectar();
-        int encontrado = 0;
-        try {
-            smt = con.createStatement();
-            rs = smt.executeQuery("select * from ventas");
-            while (rs.next()) {
-                Venta v = new Venta();
-                v.setId_venta(rs.getInt("id_venta"));
-                v.setCantidadproducto(rs.getInt("cantidadproducto"));
-                v.setFechaventa(rs.getString("fechaventa"));
-                v.setTotalventaproducto(rs.getDouble("totalventaproducto"));
-                
-
-                listaVentas.add(v);
-                encontrado = 1;
-
-            }
-
-        } catch (SQLException sqle) {
-            System.out.println("Error " + sqle);
-        }
-        desconectar();
-        if (encontrado != 0) {
-            return listaVentas;
-        } else {
-            return null;
-        }
-    }
-    
-    
-
-    //metodo para buscar una venta en la base de datos
-    public Venta buscarVenta(int id_venta){
-        Venta v=new Venta();
-        conectar();
-        int encontrado=0;
-        
-        try{
-            smt=con.createStatement();
-            rs=smt.executeQuery("select * from ventas where (id_venta='"+id_venta+"')");
-            rs.next();
-            if (rs.getRow()!=0) {
-                v.setId_venta(rs.getInt("id_venta"));
-                v.setCantidadproducto(rs.getInt("cantidadproducto"));
-                v.setFechaventa(rs.getString("fechaventa"));
-                v.setTotalventaproducto(rs.getDouble("totalventaproducto"));
-                encontrado=1;
-            }
-        }catch (SQLException sqle) {
-            System.out.println("Error " + sqle);
-        }
-        desconectar();
-        if (encontrado != 0) {
-            return v;
-        } else {
-            return null;
-        }
-    }
-    
-     //Modificar
-    public void modificarVenta(Venta v){
-        conectar();
-        int a=0;
-        try{
-            smt=con.createStatement();
-            a=smt.executeUpdate("update ventas"
-                    + ",cantidadproducto="+v.getCantidadproducto()+""
-                    + ",fechaventa='"+v.getFechaventa()+"'"
-                    + ",totalventaproducto="+v.getTotalventaproducto()+""
-                    + " where (id_venta='"+v.getId_venta()+"')");
-        }
-        catch(SQLException sqle){
-            System.out.println("Error: "+sqle);
-        }
-        desconectar();
-    }
-    
-    
-    //Metodo para eliminar venta
-    public void eliminarventa(int id_venta){
-        conectar();
-        int a=0;
-        try{
-            smt=con.createStatement();
-            a=smt.executeUpdate("delete from ventas where (id_venta='"+id_venta+"')");  //nos falta una S en from ventass
-        }
-        catch(SQLException sqle){
-            System.out.println("Error: "+sqle);
-        }
-        desconectar();
-    }
-    
-    
-    
     //Metodo para obtener la conexión
     public Connection miConexion(){
         return this.con;

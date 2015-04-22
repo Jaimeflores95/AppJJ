@@ -1,26 +1,27 @@
 <%-- 
-    Document   : editarcliente2
-    Created on : 26/02/2015, 09:54:42 PM
-    Author     : ConMonisa
-    Descripción: Este Jsp obtiene los datos del formulario para editar el cliente
+    Document   : insertarcompra2
+    Created on : 12/04/2015, 09:46:18 PM
+    Author     : AppJJ
+    Descripción: Obtiene los datos del formulario insertarcompra.jsp
 --%>
 
 
 
+<%@page import="com.canteras.clases.Compra"%>
 <%@page import="com.canteras.dao.EmpresaDAO"%>
-<%@page import="com.canteras.clases.Cliente"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    //Con esto verificamos que el usuario ya esta autentificado
+    //Con esto verificamos que el empleado ya esta autentificado
     if (session.getAttribute("nombrempleado") == null && session.getAttribute("tipoempleado").toString().equals("1")) {
         response.sendRedirect("index.jsp");
     }
 %>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
        <!inicio codigo plantilla >
     <meta charset="utf-8">
     <meta name="description" content="Your description">
@@ -48,13 +49,11 @@
 		})
 	</script>
         <!fin codigo plantilla >
-        <title>.:.CANTERAS GALINDO.:.</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
-        <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
-      
-    </head>
-    <body>
-       <!inicio codigo plantilla>
+    <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
+        <title>Insertar Cliente 2</title>
+        
+        <!inicio codigo plantilla>
         <header>
     <div class="inner">
         
@@ -71,8 +70,9 @@
                 </div>
             </div>
     <!fin codigo plantilla>
-          
-  <br /><br />
+    </head>
+    <body>
+           <br /><br />
         <%
 
             //de acuerdo al tipo de empleado mostramos el contenido correspondiente
@@ -80,7 +80,6 @@
 
 
         %>
-        
         <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
@@ -98,19 +97,17 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-
+	
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
-
 
           <%
             }
         else{
             %>
 
-            
-            <!-- Start css3menu.com BODY section -->
+          <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -127,55 +124,50 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-
+	
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
             
             
 <!--Fin-->
+           
         <%
             }
         %>
-        
-        
-         
 
- <h2>Editar cliente</h2>
+
+<h2>Nueva Compra</h2>
+        
         <%
-
-            Cliente c = new Cliente();
-            EmpresaDAO edao = new EmpresaDAO();
-
-           //obtenemos los datos del formulario y los asignamos al objeto
-            c.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
-            c.setNombrecliente(request.getParameter("nombrecliente"));
-            c.setApellidoscliente(request.getParameter("apellidoscliente"));
-            c.setDomiciliocliente(request.getParameter("domiciliocliente"));
-            c.setEmailcliente(request.getParameter("emailcliente"));
-            c.setTelefonocliente(request.getParameter("telefonocliente"));
-            c.setRFC(request.getParameter("RFC"));
-            //Verificamos cual boton presiono el  cliente y hacemos la llamada correspondiente
-            if (request.getParameter("guardar")!=null) {
-                    edao.modificarCliente(c);
-                    out.println("Se modifico el registro");
-                }
-            else if (request.getParameter("eliminar")!=null) {
-                    edao.eliminarCliente(c.getIdcliente());
-                    out.println("Se elimino el registro");
-                }else{
-                response.sendRedirect("home.jsp");
+        
+            EmpresaDAO edao=new EmpresaDAO();
+            
+        
+                Compra co=new Compra();
+                co.setIdcli(Integer.parseInt(request.getParameter("idcli")));
+                co.setNombreproducto(request.getParameter("nombreproducto"));
+                co.setMedidas(request.getParameter("medidas"));
+                co.setFechacompra(request.getParameter("fechacompra"));
+                co.setTotalcompra(Double.parseDouble(request.getParameter("totalcompra")));
+                edao.insertarCompra(co);
+                out.println("La compra se ha insertado correctamente");
                 
-            }
+            
         %>
+       
         
         <br /><br />
          <image src="images/1.jpg" alt="" />
-        <br /><br />
-        <br /><br />
-        <br /><br />
-        <br /><br />
-        
+         
+          <center>
+           <a href="listacompras.jsp"><image src="images/lista.jpg"   href="listacompras.jsp"></image></a>
+          </center>               
+                          
+         <br /><br />  
+         <br /><br />
+         <br /><br />
+         
           <!-- Footer -->
 <footer>
     <div class="copyright">
@@ -189,5 +181,5 @@
         <li><a href="#"><img src="images/social-link-3.jpg" alt=""></a></li>  
     </ul>
 </footer>
-    </body>
+</body>
 </html>

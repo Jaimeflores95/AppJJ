@@ -1,27 +1,29 @@
 <%-- 
-    Document   : editarcliente2
-    Created on : 26/02/2015, 09:54:42 PM
-    Author     : ConMonisa
-    Descripción: Este Jsp obtiene los datos del formulario para editar el cliente
+    Document   : listacompras
+    Created on : 12/04/2015, 12:26:04 PM
+    Author     : AppJJ
+    Descripción: Obtiene los datos insertados en la tabla compras, asi mismo contiene in link a editar la compra.
 --%>
 
 
-
+<%@page import="com.canteras.clases.Compra"%>
 <%@page import="com.canteras.dao.EmpresaDAO"%>
-<%@page import="com.canteras.clases.Cliente"%>
+
+<%@page import="java.util.List"%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    //Con esto verificamos que el usuario ya esta autentificado
-    if (session.getAttribute("nombrempleado") == null && session.getAttribute("tipoempleado").toString().equals("1")) {
+    //Con esto verificamos que el empleado ya esta autentificado
+    if (session.getAttribute("nombrempleado") == null) {
         response.sendRedirect("index.jsp");
     }
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-       <!inicio codigo plantilla >
+      <!inicio codigo plantilla >
     <meta charset="utf-8">
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
@@ -48,13 +50,13 @@
 		})
 	</script>
         <!fin codigo plantilla >
-        <title>.:.CANTERAS GALINDO.:.</title>
+        <title>Lista</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
-        <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
-      
+       <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
+     
     </head>
     <body>
-       <!inicio codigo plantilla>
+          <!inicio codigo plantilla>
         <header>
     <div class="inner">
         
@@ -80,8 +82,7 @@
 
 
         %>
-        
-        <!-- Start css3menu.com BODY section -->
+         <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -109,8 +110,7 @@
         else{
             %>
 
-            
-            <!-- Start css3menu.com BODY section -->
+              <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -134,49 +134,57 @@
             
             
 <!--Fin-->
+           
         <%
             }
         %>
-        
-        
-         
 
- <h2>Editar cliente</h2>
-        <%
 
-            Cliente c = new Cliente();
-            EmpresaDAO edao = new EmpresaDAO();
+<h2>Lista de compras</h2>
+<center>
+        <table border="0" width="800">
+            <thead>
+                <tr>
+                    <th width="150">ID Compra</th>
+                    <th width="150">ID Cliente</th>
+                    <th width="250">Nombre Producto</th>
+                    <th width="150">Medidas</th>
+                    <th width="150">Fecha Compra</th>
+                    <th width="150">Total Compra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    EmpresaDAO edao = new EmpresaDAO();
+                    List<Compra> listaCompras = edao.getCompras();
+                    String link;
+                    if (listaCompras != null) {
+                        for (int i = 0; i < listaCompras.size(); i++) {
 
-           //obtenemos los datos del formulario y los asignamos al objeto
-            c.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
-            c.setNombrecliente(request.getParameter("nombrecliente"));
-            c.setApellidoscliente(request.getParameter("apellidoscliente"));
-            c.setDomiciliocliente(request.getParameter("domiciliocliente"));
-            c.setEmailcliente(request.getParameter("emailcliente"));
-            c.setTelefonocliente(request.getParameter("telefonocliente"));
-            c.setRFC(request.getParameter("RFC"));
-            //Verificamos cual boton presiono el  cliente y hacemos la llamada correspondiente
-            if (request.getParameter("guardar")!=null) {
-                    edao.modificarCliente(c);
-                    out.println("Se modifico el registro");
-                }
-            else if (request.getParameter("eliminar")!=null) {
-                    edao.eliminarCliente(c.getIdcliente());
-                    out.println("Se elimino el registro");
-                }else{
-                response.sendRedirect("home.jsp");
-                
-            }
-        %>
-        
-        <br /><br />
-         <image src="images/1.jpg" alt="" />
-        <br /><br />
-        <br /><br />
-        <br /><br />
-        <br /><br />
-        
-          <!-- Footer -->
+                            //generamos el link para editar la compra
+                            link = "editarcompra.jsp?idcompra="
+                                    + listaCompras.get(i).getIdcompra();
+
+                            out.println("<tr>");
+                            out.println("<td><a href=" + link + ">" + listaCompras.get(i).getIdcompra() + "</a></td>");
+                            out.println("<td>" + listaCompras.get(i).getIdcli() + "</td>");
+                            out.println("<td>" + listaCompras.get(i).getNombreproducto() + "</td>");
+                            out.println("<td>" + listaCompras.get(i).getMedidas() + "</td>");
+                            out.println("<td>" + listaCompras.get(i).getFechacompra()+ "</td>");
+                            out.println("<td>" + listaCompras.get(i).getTotalcompra()+ "</td>");
+                            out.println("</tr>");
+                        }
+                    } else {
+                        out.println("<tr><td colspán='4' align='center'>" + "No se encontraron registros</td></tr>");
+                    }
+                %>
+            </tbody>
+            
+        </table>
+</center>
+            <image src="img/2.jpg" alt="" />
+  
+            <!-- Footer -->
 <footer>
     <div class="copyright">
         &copy; 2015 <strong class="Canteras ">Canteras Galindo</strong>
@@ -191,3 +199,4 @@
 </footer>
     </body>
 </html>
+

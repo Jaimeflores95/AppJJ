@@ -1,14 +1,14 @@
 <%-- 
-    Document   : editarcliente2
-    Created on : 26/02/2015, 09:54:42 PM
+    Document   : editarcompra2
+    Created on : 14/04/2015, 09:54:42 PM
     Author     : ConMonisa
-    Descripción: Este Jsp obtiene los datos del formulario para editar el cliente
+    Descripción: Este Jsp obtiene los datos del formulario para editar el compra
 --%>
 
 
 
+<%@page import="com.canteras.clases.Compra"%>
 <%@page import="com.canteras.dao.EmpresaDAO"%>
-<%@page import="com.canteras.clases.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -141,27 +141,26 @@
         
          
 
- <h2>Editar cliente</h2>
+ <h2>Editar compra</h2>
         <%
 
-            Cliente c = new Cliente();
+            Compra co = new Compra();
             EmpresaDAO edao = new EmpresaDAO();
 
            //obtenemos los datos del formulario y los asignamos al objeto
-            c.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
-            c.setNombrecliente(request.getParameter("nombrecliente"));
-            c.setApellidoscliente(request.getParameter("apellidoscliente"));
-            c.setDomiciliocliente(request.getParameter("domiciliocliente"));
-            c.setEmailcliente(request.getParameter("emailcliente"));
-            c.setTelefonocliente(request.getParameter("telefonocliente"));
-            c.setRFC(request.getParameter("RFC"));
+            co.setIdcompra(Integer.parseInt(request.getParameter("idcompra")));
+            co.setIdcli(Integer.parseInt(request.getParameter("idcli")));
+            co.setNombreproducto(request.getParameter("nombreproduto"));
+            co.setMedidas(request.getParameter("medidas"));
+            co.setFechacompra(request.getParameter("fechacompra"));
+            co.setTotalcompra(Double.parseDouble(request.getParameter("totalcompra")));
             //Verificamos cual boton presiono el  cliente y hacemos la llamada correspondiente
             if (request.getParameter("guardar")!=null) {
-                    edao.modificarCliente(c);
+                    edao.modificarCompra(co);
                     out.println("Se modifico el registro");
                 }
             else if (request.getParameter("eliminar")!=null) {
-                    edao.eliminarCliente(c.getIdcliente());
+                    edao.eliminarCompra(c.getIdcompra());
                     out.println("Se elimino el registro");
                 }else{
                 response.sendRedirect("home.jsp");

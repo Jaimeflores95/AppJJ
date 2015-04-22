@@ -1,19 +1,16 @@
 <%-- 
-    Document   : editarcliente2
-    Created on : 26/02/2015, 09:54:42 PM
-    Author     : ConMonisa
-    Descripción: Este Jsp obtiene los datos del formulario para editar el cliente
+    Document   : buscarcompras
+    Created on : 13/04/2015, 11:48:47 AM
+    Author     : AppJJ
+    Descripción: Busca los compras existentes en la tabla.
+
 --%>
 
-
-
-<%@page import="com.canteras.dao.EmpresaDAO"%>
-<%@page import="com.canteras.clases.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
     //Con esto verificamos que el usuario ya esta autentificado
-    if (session.getAttribute("nombrempleado") == null && session.getAttribute("tipoempleado").toString().equals("1")) {
+    if (session.getAttribute("nombrempleado") == null) {
         response.sendRedirect("index.jsp");
     }
 %>
@@ -21,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-       <!inicio codigo plantilla >
+     <!inicio codigo plantilla >
     <meta charset="utf-8">
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
@@ -48,13 +45,31 @@
 		})
 	</script>
         <!fin codigo plantilla >
-        <title>.:.CANTERAS GALINDO.:.</title>
+        <title>Buscar cliente</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
         <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
-      
+        <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script>
+             $(document).ready(function() {
+                $("#formulario").submit(function() {
+                    
+                    if ($("#idcompra").val().length === 0) {
+                        $("#erroridcompra").css("display", "inline");
+                        $("#idcompra").focus();
+                        return false;
+                    } else {
+                        $("#erroridcompra").css("display", "none");
+                        
+                    }
+                         return true;
+                });
+            });
+                    </script>
+                    
+                    
     </head>
     <body>
-       <!inicio codigo plantilla>
+     <!inicio codigo plantilla>
         <header>
     <div class="inner">
         
@@ -81,7 +96,9 @@
 
         %>
         
-        <!-- Start css3menu.com BODY section -->
+         <!-- Inicio codigo menu -->
+       
+<!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -98,7 +115,7 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-
+	
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
@@ -134,49 +151,34 @@
             
             
 <!--Fin-->
+
+<!--Fin-->
         <%
             }
         %>
+        <h2>Buscar Compras</h2>
+       
+        <center>
+        <form action="editarcompra.jsp" method="POST" id="formulario">
+            ID a buscar:                                                           
+            <input style="color:black" type="text" name="idcompra" id="idcompra" />
+            
         
-        
-         
-
- <h2>Editar cliente</h2>
-        <%
-
-            Cliente c = new Cliente();
-            EmpresaDAO edao = new EmpresaDAO();
-
-           //obtenemos los datos del formulario y los asignamos al objeto
-            c.setIdcliente(Integer.parseInt(request.getParameter("idcliente")));
-            c.setNombrecliente(request.getParameter("nombrecliente"));
-            c.setApellidoscliente(request.getParameter("apellidoscliente"));
-            c.setDomiciliocliente(request.getParameter("domiciliocliente"));
-            c.setEmailcliente(request.getParameter("emailcliente"));
-            c.setTelefonocliente(request.getParameter("telefonocliente"));
-            c.setRFC(request.getParameter("RFC"));
-            //Verificamos cual boton presiono el  cliente y hacemos la llamada correspondiente
-            if (request.getParameter("guardar")!=null) {
-                    edao.modificarCliente(c);
-                    out.println("Se modifico el registro");
-                }
-            else if (request.getParameter("eliminar")!=null) {
-                    edao.eliminarCliente(c.getIdcliente());
-                    out.println("Se elimino el registro");
-                }else{
-                response.sendRedirect("home.jsp");
-                
-            }
-        %>
-        
-        <br /><br />
-         <image src="images/1.jpg" alt="" />
+            <br />  <br />
+            <input type="submit" value="Buscar" />
+          
+            <div id="erroridcompra" style="display: none;color:red;">
+                            Debes de ingresar un idcliente**
+                        </div>
+            <br /><br />
+            <image src="img/5.jpg" alt="" />
+</form>
+            </center>
         <br /><br />
         <br /><br />
         <br /><br />
         <br /><br />
-        
-          <!-- Footer -->
+      <!-- Footer -->
 <footer>
     <div class="copyright">
         &copy; 2015 <strong class="Canteras ">Canteras Galindo</strong>
@@ -191,3 +193,4 @@
 </footer>
     </body>
 </html>
+

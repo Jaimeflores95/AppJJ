@@ -1,9 +1,15 @@
 <%-- 
-    Document   : insertarempleado
-    Created on : 25/02/2015, 11:57:42 AM
-    Author     : AppJJ
-    Descripción: Permite mediante un formulario ingresar datos del empleado en la tabla empleados.
+    Document   : editarcompra
+    Created on : 14/04/2015, 09:38:13 PM
+    Author     : ConMonisa
+    Descripción: Este Jsp muestra el formulario para editar una compra.
 --%>
+
+
+
+
+<%@page import="com.canteras.clases.Compra"%>
+<%@page import="com.canteras.dao.EmpresaDAO"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +22,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <!inicio codigo plantilla >
+        
+      <!inicio codigo plantilla >
     <meta charset="utf-8">
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
@@ -43,88 +50,73 @@
 		})
 	</script>
         <!fin codigo plantilla >
-
-        <title>.:.Canteras Galindo.:.</title>
+        <title>.:.CANTERAS GALINDO.:.</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
         <link rel="stylesheet" href="css/style1.css" type="text/css" /><style type="text/css">._css3m{display:none}</style>
-    
-        
+       
         <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
         <script>
-            $(document).ready(function() {
+             $(document).ready(function() {
                 $("#formulario").submit(function() {
-                    if ($("#idempleado").val().length === 0) {
-                        $("#erroridempleado").css("display", "inline");
-                        $("#idempleado").focus();
+                    
+                    if ($("#idcompra").val().length === 0) {
+                        $("#erroridcompra").css("display", "inline");
+                        $("#idcompra").focus();
                         return false;
                     } else {
-                        $("#erroridempleado").css("display", "none");
+                        $("#erroridcompra").css("display", "none");
+                    }
+                     if ($("#idcli").val().length === 0) {
+                        $("#erroridcli").css("display", "inline");
+                        $("#idcli").focus();
+                        return false;
+                    } else {
+                        $("#erroridcli").css("display", "none");
+                    }
+                     if ($("#nombreproducto").val().length === 0) {
+                        $("#errornombreproducto").css("display", "inline");
+                        $("#nombreproducto").focus();
+                        return false;
+                    } else {
+                        $("#errornombreproducto").css("display", "none");
+                    }
+                     if ($("#cantidadproducto").val().length === 0) {
+                        $("#errorcantidadproducto").css("display", "inline");
+                        $("#cantidadproducto").focus();
+                        return false;
+                    } else {
+                        $("#errorcantidadproducto").css("display", "none");
+                    }
+                      if ($("#medidas").val().length === 0) {
+                        $("#errormedidas").css("display", "inline");
+                        $("#medidas").focus();
+                        return false;
+                    } else {
+                        $("#errormedidas").css("display", "none");
+                    }
+                    if ($("#fechacompra").val().length === 0) {
+                        $("#errorfechacompra").css("display", "inline");
+                        $("#fechacompra").focus();
+                        return false;
+                    } else {
+                        $("#errorfechacompra").css("display", "none");
+                    }
+                     if ($("#totalcompra").val().length === 0) {
+                        $("#errortotalcompra").css("display", "inline");
+                        $("#totalcompra").focus();
+                        return false;
+                    } else {
+                        $("#errortotalcompra").css("display", "none");
                     }
 
-                    if ($("#password").val().length === 0 ) {
-                        $("#errorpassword").css("display", "inline");
-                        $("#password").focus();
-                        return false;
-                    } else {
-                        $("#errorpassword").css("display", "none");
-                    }
-
-                    if ($("#password2").val().length === 0 ) {
-                        $("#errorpassword2").css("display", "inline");
-                        $("#password2").focus();
-                        return false;
-                    } else {
-                        $("#errorpassword2").css("display", "none");
-                    }
-
-                    //Verificamos que las contraseñas coincidan
-                    if ($("#password3").val() != $("#password3").val()) {
-                        $("#errorpassword3").css("display", "inline");
-                        $("#password3").focus();
-                        return false;
-
-                    }
-                    else {
-                        $("#errorpassword3").css("display", "none");
-                    }
-                   
-                   if ($("#nombrempleado").val().length === 0) {
-                        $("#errornombrempleado").css("display", "inline");
-                        $("#nombrempleado").focus();
-                        return false;
-                    } else {
-                        $("#errornombrempleado").css("display", "none");
-                    }
-                    if ($("#tipoempleado option:selected").val()== "--") {
-                        $("#errortipoempleado").css("display", "inline");
-                        $("#tipoempleado").focus();
-                        return false;
-                    } else {
-                        $("#errortipoempleado").css("display", "none");
-                    }
-                    if ($("#edad").val().length == 0 || isNaN($("#edad").val())) {
-                        $("#erroredad").css("display", "inline");
-                        $("#edad").focus();
-                        return false;
-                    } else {
-                        $("#erroredad").css("display", "none");
-                    }
-                     if ($("#direccion").val().length === 0) {
-                        $("#errordireccion").css("display", "inline");
-                        $("#direccion").focus();
-                        return false;
-                    } else {
-                        $("#errordireccion").css("display", "none");
-                    }
                     return true;
                 });
             });
-
-        </script>
+            </script>
         
-    </head  
+    </head>
     <body>
- <!inicio codigo plantilla>
+         <!inicio codigo plantilla>
         <header>
     <div class="inner">
         
@@ -150,9 +142,8 @@
 
 
         %>
-     
-
- <!-- Start css3menu.com BODY section -->
+		
+       <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -167,9 +158,9 @@
 		<li><a href="listaempleados.jsp">Lista</a></li>
 		<li class="sublast"><a href="buscarempleados.jsp">Buscar</a></li>
 	</ul></li>
-	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
+<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-	
+
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
@@ -181,7 +172,7 @@
             %>
 
             
-                   <!-- Start css3menu.com BODY section -->
+             <!-- Start css3menu.com BODY section -->
 <ul id="css3menu1" class="topmenu">
 <input type="checkbox" id="css3menu-switcher" class="switchbox"><label onclick="" class="switch" for="css3menu-switcher"></label>	<li class="topmenu"><a href="home.jsp" style="height:32px;line-height:32px;"><img src="css/unlocked.png" alt=""/>Inicio</a></li>
 	<li class="topmenu"><a href="#" style="height:32px;line-height:32px;"><span><img src="css/users.png" alt=""/>Clientes</span></a>
@@ -198,151 +189,141 @@
 	</ul></li>
 	<li class="topmenu"><a href="catalogo.html" style="height:32px;line-height:32px;"><span><img src="css/cube.png" alt=""/>Producto</span></a>
 	</li>
-	
+
 	<li class="topmenu"><a href="Salir" style="height:32px;line-height:32px;"><img src="css/lock2.png" alt=""/>Salir</a></li>
 </ul><p class="_css3m"><a href="http://css3menu.com/">css3 menu</a> by Css3Menu.com</p>
 <!-- End css3menu.com BODY section -->
             
             
 <!--Fin-->
-            
-            
         <%
             }
         %>
         
+        
+        <!--Ya estaba -->
+  <%
 
-        <h2>Nuevo Empleado</h2>
-    <center>
-        <form action="insertarempleado2.jsp" method="POST" id="formulario">
-            <table>
-                <thead>
+            Compra co = new Compra();
+            EmpresaDAO edao = new EmpresaDAO();
+
+           
+int idcompra=Integer.parseInt(request.getParameter("idcompra"));
+             co= edao.buscarCompra(idcompra);
+
+            if (co == null) {
+
+
+        %>
+        <div style="color:red">
+            No se encontr&oacute; el compra
+        </div>
+        <br /><br />
+        <a href="buscarcompras.jsp">Buscar otro</a>
+        <%        } else {
+        %>
+        
+        <h2>Editar  Compra</h2>
+          <center>
+        <form action="editarcomprar2.jsp" method="POST" id="formulario">
+            <table style="font-size:12pt" >
+                <thead  style="color:black">
                     <tr>
                         <th colspan="2">
-                            Proporciona los siguientes datos
+                Proporciona los siguientes datos: 
+                            <br /><br />
                         </th>
+                        <br /><br />
                     </tr>
                 </thead>
                 <!-- Fin de encabezado de tabla -->
 
                 <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">ID empleado:</td>
+                <tr style="color:black">
+                    <td align="right">Id Cliente:</td>
                     <td align="left">
-                        <input type="text" name="idempleado" id="idempleado" />
-                        <div id="erroridempleado" style="display: none;color:red;">
-                            Debes Ingresar el Empleado
+                        <input type="text" name="idcli" id="idcli" />
+                        <div id="erroridcli" style="display: none;color:red;">
+                            **Debes de ingresar el idcliente**
                         </div>
-
-                        <%
-                            if (request.getParameter("errorid") != null) {
-                        %>
-                        <div id="erroridempleado" style="display:inline;color:red;">
-                            El ID seleccionado ya esta en uso
-                        </div>
-                        <%
-                            }
-                        %>
-
                     </td>
                 </tr>
                 <!--Fin de Fila -->
-
+                
                 <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Password:</td>
+                <tr style="color:black">
+                    <td align="right">Nombre Producto:</td>
                     <td align="left">
-                        <input type="password" name="password" id="password" />
-                        <div id="errorpassword" style="display: none;color:red;">
-                            Debes Ingresar una contrase&ntilde;a
+                        <input type="text" name="nombreprodcto" id="nombreproduto" />
+                        <div id="errornombreproducto" style="display: none;color:red;">
+                            **Debes de ingresar la cantidad del producto**
                         </div>
                     </td>
                 </tr>
                 <!--Fin de Fila -->
-
-                <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Confirmar Password</td>
-                    <td align="left">
-                        <input type="password" name="password2" id="password2" />
-                        <div id="errorpassword2" style="display: none;color:red;">
-                            Debes de validar la contrase&ntilde;a
-                        </div>
-                        <div id="errorpassword" style="display: none;color:red;">
-                            Las contrase&ntilde;as no coninciden
-                        </div>
-                    </td>
-                </tr>
-                <!--Fin de Fila -->
-
-                <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Nombre</td>
-                    <td align="left">
-                        <input type="text" name="nombrempleado" id="nombrempleado" />
-                        <div id="errornombrempleado" style="display: none;color:red;">
-                            Debes de ingresar un nombre
-                        </div>
-                    </td>
-                </tr>
-                <!--Fin de Fila -->
+                
+                
+                  
                 
                  <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Tipo de Empleado</td>
+                <tr style="color:black">
+                    <td align="right">Medidas:</td>
                     <td align="left">
-                        <select name="tipoempleado" id="tipoempleado" >
-                            <option>--</option>
-                            <option value="1">Dueño</option>
-                            <option value="2">Empleado Normal</option>
-                        </select>
-                        <div id="errortipoempleado" style="display: none;color:red;">
-                            Debes seleccionar un tipo de empleado
+                        <input type="text" name="medidas" id="medidas" />
+                        <div id="errormedidas" style="display: none;color:red;">
+                            **Debes de ingresar las medidas**
+                        </div>
+                    </td>
+                </tr>
+                <!--Fin de Fila -->
+                
+                  <!-- Inicio de Fila -->
+                <tr style="color:black">
+                    <td  align="right">Fecha de la Compra:</td>
+                    <td align="left">
+                        <input type="text" name="fechacompra" id="fechacompra" />
+                        <div id="errorfechacompra" style="display: none;color:red;">
+                            **Debes de ingresar la fecha**
                         </div>
                     </td>
                 </tr>
                 <!--Fin de Fila -->
                 
                 <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Edad</td>
+                <tr style="color:black">
+                    <td align="right">Total de la Compra:</td>
                     <td align="left">
-                        <input type="text" name="edad" id="edad" />
-                        <div id="erroredad" style="display: none;color:red;">
-                            Debes de ingresar un nombre
+                        <input type="text" name="totalcompra" id="totalcompra" />
+                        <div id="errortotalcompra" style="display: none;color:red;">
+                            **Debes de ingresar el total de la compra**
                         </div>
                     </td>
                 </tr>
                 <!--Fin de Fila -->
                 
                 <!-- Inicio de Fila -->
-                <tr>
-                    <td align="right">Direccion</td>
-                    <td align="left">
-                        <input type="text" name="direccion" id="direccion" />
-                        <div id="errordireccion" style="display: none;color:red;">
-                            Debes de ingresar un nombre
-                        </div>
-                    </td>
-                </tr>
-                <!--Fin de Fila -->
-                
-
-                <!-- Inicio de Fila -->
-                <tr>
+                <tr style="color:black">
                     <td colspan="2" align="center">
-                        <input type="submit" value="Guardar" />
-                    </td>
+                        <br />
+                        <input type="submit" value="Comprar" name="comprar"/>
+                        <br /><br />
+                        <br /><br />
 
-                </tr>
+                        </td>
+                        </tr>
                 <!--Fin de Fila -->
-
             </table>
-                        <image src="img/3t.jpg" alt="" />
+            
+            <image src="img/3t.jpg" alt="" />
         </form>
-    </center>
+     </center>
                         
-    <!-- Footer -->
+           <%
+            }
+        %>   
+        
+        
+        <!-- Footer -->
 <footer>
     <div class="copyright">
         &copy; 2015 <strong class="Canteras ">Canteras Galindo</strong>
@@ -354,8 +335,7 @@
         <li><a href="#"><img src="images/social-link-2.jpg" alt=""></a></li>
         <li><a href="#"><img src="images/social-link-3.jpg" alt=""></a></li>  
     </ul>
-</footer>         
+</footer>
     </body>
-    
-    
 </html>
+
